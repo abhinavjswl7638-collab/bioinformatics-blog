@@ -1,77 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-
-<title>GenBish | Bioinformatics Research Blog</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-
-body{
-font-family:Arial;
-margin:0;
-background:#f2f5fa;
-}
-
-header{
-background:#2e55d4;
-color:white;
-padding:30px;
-text-align:center;
-}
-
-nav{
-background:#111;
-padding:12px;
-text-align:center;
-}
-
-nav a{
-color:white;
-margin:10px;
-text-decoration:none;
-font-size:16px;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
-
-.search{
-margin:20px 0;
-}
-
-.search input{
-width:100%;
-padding:12px;
-font-size:16px;
-}
-
-.card{
-background:white;
-padding:20px;
-margin:20px 0;
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.card h3{
-margin-top:0;
-}
-
-footer{
-background:#111;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
-
-</style>
-
+<title>GenBish Research Platform</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -79,75 +11,57 @@ margin-top:40px;
 <header>
 
 <h1>GenBish</h1>
-
 <p>Bioinformatics & Biotechnology Research Platform</p>
+
+<input 
+type="text"
+id="searchInput"
+placeholder="Search research..."
+onkeyup="searchSite()">
 
 </header>
 
 <nav>
 
-<a href="index.html">Home</a>
-<a href="genomics.html">Genomics</a>
-<a href="ai.html">AI Drug Discovery</a>
-<a href="protein.html">Protein Structure</a>
-<a href="papers.html">Research Papers</a>
+<a href="articles.html">Articles</a>
+<a href="protein.html">Protein Viewer</a>
+<a href="genome.html">Genome Browser</a>
+<a href="ai-molecule.html">AI Molecule Generator</a>
+<a href="dataset.html">Datasets</a>
+<a href="login.html">Login</a>
 
 </nav>
 
-<div class="container">
+<section id="articles">
 
-<div class="search">
+<div class="card">
 
-<input type="text" placeholder="Search bioinformatics articles">
+<h2>AI Drug Discovery</h2>
+
+<p>
+Artificial intelligence accelerates molecular docking and drug design.
+</p>
+
+<a href="articles/ai-drug.html">Read article</a>
 
 </div>
 
 <div class="card">
 
-<h3>AI Drug Discovery</h3>
+<h2>Genomics Research</h2>
 
-<p>Artificial intelligence is transforming molecular docking and drug design.</p>
+<p>
+Computational analysis of genome sequencing data.
+</p>
 
-</div>
-
-<div class="card">
-
-<h3>Genomics Research</h3>
-
-<p>Genomics studies DNA sequences and genome analysis using computational tools.</p>
+<a href="articles/genomics.html">Read article</a>
 
 </div>
 
-<div class="card">
+</section>
 
-<h3>Protein Structure Prediction</h3>
+<script src="js/search.js"></script>
 
-<p>Machine learning models predict 3D protein folding structures.</p>
-
-</div>
-
-</div>
-
-<footer>
-
-<p>© 2026 GenBish Bioinformatics Blog</p>
-
-</footer>
-<script>
-function searchContent() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let cards = document.getElementsByClassName("card");
-
-    for (let i = 0; i < cards.length; i++) {
-        let text = cards[i].innerText.toLowerCase();
-        if (text.includes(input)) {
-            cards[i].style.display = "block";
-        } else {
-            cards[i].style.display = "none";
-        }
-    }
-}
-</script>
 </body>
-
 </html>
+            
