@@ -1,134 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bioinformatics Education Blog</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 0; }
-        .blog-card { margin-bottom: 20px; }
-        #editor { min-height: 300px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BioInformatix Labs | Next‑Gen Bioinformatics Insights</title>
+  <meta name="description" content="Educational bioinformatics blog covering genomics, proteomics, AI in biotech, and computational biology.">
+  <meta name="keywords" content="bioinformatics, genomics, proteomics, computational biology, biotech blog, education">
+  <meta name="author" content="Abhinav Jaiswal">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">BioInfo Blog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#add-blog">New Post</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blogs">Blogs</a></li>
-                </ul>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-mark">Bio</span><span class="logo-text">Informatix Labs</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="#topics">Topics</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Bioinformatics Education Hub</h1>
-            <p class="lead">Share and learn about genomic analysis, sequence alignment, and computational biology.</p>
-        </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Educational Bioinformatics Hub for the Next Biotech Giant</h1>
+      <p>Deep‑dive articles on genomics, proteomics, AI in drug discovery, and computational biology, written for students and researchers.</p>
+      <form class="search-bar" onsubmit="event.preventDefault();">
+        <input type="text" id="searchInput" placeholder="Search bioinformatics topics, e.g. RNA‑seq, BLAST, pipelines...">
+      </form>
+    </div>
+    <div class="hero-highlight">
+      <p>Trusted educational resource to build your bioinformatics career and biotech innovations.</p>
+      <ul>
+        <li>Genomics & NGS workflows</li>
+        <li>Proteomics & structural biology</li>
+        <li>AI/ML for omics data</li>
+        <li>Cloud & reproducible pipelines</li>
+      </ul>
+    </div>
+  </section>
+
+  <main>
+    <section id="latest" class="section">
+      <div class="section-header">
+        <h2>Latest Insights</h2>
+        <p>Curated educational posts in bioinformatics and modern biotechnology.</p>
+      </div>
+      <div id="postsContainer" class="posts-grid">
+        <!-- Cards injected by script.js -->
+      </div>
     </section>
 
-    <!-- Add Blog Section -->
-    <section id="add-blog" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Write New Educational Blog</h2>
-            <form id="blogForm" class="row g-3 justify-content-center">
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="title" placeholder="Blog Title (e.g., 'Introduction to BLAST')" required>
-                </div>
-                <div class="col-md-8">
-                    <textarea id="editor"></textarea>
-                </div>
-                <div class="col-md-8">
-                    <button type="submit" class="btn btn-primary btn-lg w-100">Upload Blog Post</button>
-                </div>
-            </form>
-        </div>
+    <section id="topics" class="section section-alt">
+      <div class="section-header">
+        <h2>Core Bioinformatics Domains</h2>
+        <p>Explore structured learning paths across major domains.</p>
+      </div>
+      <div class="topics-grid">
+        <article class="topic-card">
+          <h3>Genomics</h3>
+          <p>Reference genomes, variant calling, RNA‑seq, and clinical genomics workflows.</p>
+        </article>
+        <article class="topic-card">
+          <h3>Proteomics</h3>
+          <p>Mass‑spec data analysis, protein identification, and functional annotation.</p>
+        </article>
+        <article class="topic-card">
+          <h3>Structural Biology</h3>
+          <p>Protein structure prediction, docking, and structure‑based drug design.</p>
+        </article>
+        <article class="topic-card">
+          <h3>AI & ML</h3>
+          <p>Machine learning for omics, biomarker discovery, and precision medicine.</p>
+        </article>
+        <article class="topic-card">
+          <h3>Cloud & Pipelines</h3>
+          <p>Workflow engines, containers, and scalable analysis in the cloud.</p>
+        </article>
+        <article class="topic-card">
+          <h3>Career & Skills</h3>
+          <p>Roadmaps, tools, and project ideas for students and early‑career scientists.</p>
+        </article>
+      </div>
     </section>
 
-    <!-- Blogs Section -->
-    <section id="blogs" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Published Blogs</h2>
-            <div id="blogsList" class="row"></div>
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2>About This Platform</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>BioInformatix Labs is an educational initiative focused on turning students into industry‑ready bioinformaticians through practical, concept‑driven content.</p>
+          <p>Posts emphasize clear explanations, real‑world datasets, and modern tools used across leading biotech companies and research labs.</p>
         </div>
+        <div class="about-highlight">
+          <h3>Content Philosophy</h3>
+          <ul>
+            <li>Explain theory with code and workflows.</li>
+            <li>Bridge academic concepts to industry practice.</li>
+            <li>Keep examples reproducible and open.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Initialize TinyMCE editor
-        tinymce.init({
-            selector: '#editor',
-            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
-            toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-            height: 400,
-            menubar: false
-        });
+    <section id="contact" class="section section-alt">
+      <div class="section-header">
+        <h2>Contact</h2>
+      </div>
+      <p>For collaboration, guest posts, or suggestions, you can add a contact form later or link your email/social profiles here.</p>
+    </section>
+  </main>
 
-        // Load blogs from localStorage
-        function loadBlogs() {
-            const blogs = JSON.parse(localStorage.getItem('bioBlogs')) || [];
-            const list = document.getElementById('blogsList');
-            list.innerHTML = '';
-            blogs.forEach((blog, index) => {
-                const card = `
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card blog-card">
-                            <div class="card-body">
-                                <h5 class="card-title">${blog.title}</h5>
-                                <div class="card-text">${blog.content}</div>
-                                <button class="btn btn-danger btn-sm mt-2" onclick="deleteBlog(${index})">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                list.innerHTML += card;
-            });
-        }
+  <footer class="site-footer">
+    <p>© <span id="year"></span> BioInformatix Labs · Educational Bioinformatics Blog.</p>
+  </footer>
 
-        // Add new blog
-        document.getElementById('blogForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const title = document.getElementById('title').value;
-            const content = tinymce.get('editor').getContent();
-            const blogs = JSON.parse(localStorage.getItem('bioBlogs')) || [];
-            blogs.unshift({ title, content }); // Add to front
-            localStorage.setItem('bioBlogs', JSON.stringify(blogs));
-            document.getElementById('blogForm').reset();
-            tinymce.get('editor').setContent('');
-            loadBlogs();
-            alert('Blog uploaded successfully!');
-        });
-
-        // Delete blog
-        function deleteBlog(index) {
-            const blogs = JSON.parse(localStorage.getItem('bioBlogs')) || [];
-            blogs.splice(index, 1);
-            localStorage.setItem('bioBlogs', JSON.stringify(blogs));
-            loadBlogs();
-        }
-
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Load blogs on start
-        loadBlogs();
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
