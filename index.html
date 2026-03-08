@@ -1,68 +1,134 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>GenBish Research Platform</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioinformatics Education Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 0; }
+        .blog-card { margin-bottom: 20px; }
+        #editor { min-height: 300px; }
+    </style>
 </head>
-
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">BioInfo Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#add-blog">New Post</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blogs">Blogs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<header>
+    <!-- Hero Section -->
+    <section id="home" class="hero text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bioinformatics Education Hub</h1>
+            <p class="lead">Share and learn about genomic analysis, sequence alignment, and computational biology.</p>
+        </div>
+    </section>
 
-<h1>GenBish</h1>
-<p>Bioinformatics & Biotechnology Research Platform</p>
+    <!-- Add Blog Section -->
+    <section id="add-blog" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Write New Educational Blog</h2>
+            <form id="blogForm" class="row g-3 justify-content-center">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" id="title" placeholder="Blog Title (e.g., 'Introduction to BLAST')" required>
+                </div>
+                <div class="col-md-8">
+                    <textarea id="editor"></textarea>
+                </div>
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Upload Blog Post</button>
+                </div>
+            </form>
+        </div>
+    </section>
 
-<input 
-type="text"
-id="searchInput"
-placeholder="Search research..."
-onkeyup="searchSite()">
+    <!-- Blogs Section -->
+    <section id="blogs" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Published Blogs</h2>
+            <div id="blogsList" class="row"></div>
+        </div>
+    </section>
 
-</header>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize TinyMCE editor
+        tinymce.init({
+            selector: '#editor',
+            plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+            toolbar: 'undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            height: 400,
+            menubar: false
+        });
 
-<nav>
+        // Load blogs from localStorage
+        function loadBlogs() {
+            const blogs = JSON.parse(localStorage.getItem('bioBlogs')) || [];
+            const list = document.getElementById('blogsList');
+            list.innerHTML = '';
+            blogs.forEach((blog, index) => {
+                const card = `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card blog-card">
+                            <div class="card-body">
+                                <h5 class="card-title">${blog.title}</h5>
+                                <div class="card-text">${blog.content}</div>
+                                <button class="btn btn-danger btn-sm mt-2" onclick="deleteBlog(${index})">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                list.innerHTML += card;
+            });
+        }
 
-<a href="genome.html">Genome Browser</a>
-<a href="articles.html">Articles</a>
-<a href="protein.html">Protein Viewer</a>
-<a href="genome.html">Genome Browser</a>
-<a href="ai-molecule.html">AI Molecule Generator</a>
-<a href="dataset.html">Datasets</a>
-<a href="login.html">Login</a>
+        // Add new blog
+        document.getElementById('blogForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const content = tinymce.get('editor').getContent();
+            const blogs = JSON.parse(localStorage.getItem('bioBlogs')) || [];
+            blogs.unshift({ title, content }); // Add to front
+            localStorage.setItem('bioBlogs', JSON.stringify(blogs));
+            document.getElementById('blogForm').reset();
+            tinymce.get('editor').setContent('');
+            loadBlogs();
+            alert('Blog uploaded successfully!');
+        });
 
-</nav>
+        // Delete blog
+        function deleteBlog(index) {
+            const blogs = JSON.parse(localStorage.getItem('bioBlogs')) || [];
+            blogs.splice(index, 1);
+            localStorage.setItem('bioBlogs', JSON.stringify(blogs));
+            loadBlogs();
+        }
 
-<section id="articles">
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-<div class="card">
-
-<h2>AI Drug Discovery</h2>
-
-<p>
-Artificial intelligence accelerates molecular docking and drug design.
-</p>
-
-<a href="articles/ai-drug.html">Read article</a>
-
-</div>
-
-<div class="card">
-
-<h2>Genomics Research</h2>
-
-<p>
-Computational analysis of genome sequencing data.
-</p>
-
-<a href="articles/genomics.html">Read article</a>
-
-</div>
-
-</section>
-
-<script src="js/search.js"></script>
-
+        // Load blogs on start
+        loadBlogs();
+    </script>
 </body>
 </html>
-            
