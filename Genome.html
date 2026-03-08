@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Genome Browser | GenBish</title>
+
+<script src="https://cdn.jsdelivr.net/npm/igv@2.15.4/dist/igv.min.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+margin:20px;
+}
+
+#igv-div{
+width:100%;
+height:500px;
+border:1px solid #ccc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>GenBish Genome Browser</h1>
+
+<p>
+Explore genomic data using an interactive genome viewer.
+</p>
+
+<div id="igv-div"></div>
+
+<script>
+
+let options = {
+
+genome: "hg38",
+
+locus: "BRCA1",
+
+tracks: [
+{
+name: "Genes",
+url: "https://s3.amazonaws.com/igv.org.genomes/hg38/ncbiRefSeq.sorted.txt.gz",
+indexURL: "https://s3.amazonaws.com/igv.org.genomes/hg38/ncbiRefSeq.sorted.txt.gz.tbi",
+format: "bed",
+type: "annotation"
+}
+]
+
+};
+
+igv.createBrowser(
+document.getElementById("igv-div"),
+options
+);
+
+</script>
+
+</body>
+
+</html>
