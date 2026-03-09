@@ -1,17 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<meta name="google-site-verification" content="zU8QPGEzO8rxIZ7d2ewl6rFLkNbPej_CQWqPXaj-lVs" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Search the web and discover AI, bioinformatics and technology resources">
+<title>MySearch - AI & Bioinformatics Search</title>
 
+<meta name="description" content="Search the web and explore AI, bioinformatics, and technology resources.">
 <meta name="robots" content="index, follow">
 
-<title>MySearch</title>
+<meta name="google-site-verification" content="zU8QPGEzO8rxIZ7d2ewl6rFLkNbPej_CQWqPXaj-lVs">
 
 <style>
+
+body{
+background:#0f172a;
+font-family:Arial, sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+margin:0;
+color:white;
+}
+
+.container{
+text-align:center;
+width:90%;
+max-width:700px;
+}
+
+h1{
+font-size:48px;
+margin-bottom:20px;
+color:#ef4444;
+}
+
+.gcse-search{
+width:100%;
+max-width:600px;
+margin:auto;
+}
+
+.trending{
+list-style:none;
+padding:0;
+margin-top:30px;
+}
+
+.trending li{
+margin:10px 0;
+}
+
+.trending a{
+color:#38bdf8;
+font-size:18px;
+text-decoration:none;
+}
+
+.trending a:hover{
+text-decoration:underline;
+}
+
+footer{
+margin-top:40px;
+font-size:14px;
+color:#94a3b8;
+}
+
+</style>
+
+</head>
 
 <body>
 
@@ -19,61 +80,35 @@
 
 <h1>MySearch</h1>
 
-<input type="text" id="aiQuestion" placeholder="Ask something about AI or bioinformatics">
-
-<button onclick="generateAnswer()">Ask AI</button>
-
-<div id="aiAnswer"></div>
-
-<br><br>
+<!-- Google Search Engine -->
 
 <script async src="https://cse.google.com/cse.js?cx=058602f0365d4459b"></script>
 
 <div class="gcse-search"></div>
 
-<h3>Trending Searches</h3>
-
-<ul class="trending">
-<li><a href="https://www.google.com/search?q=AI+bioinformatics">AI Bioinformatics</a></li>
-<li><a href="https://www.google.com/search?q=drug+discovery+AI">Drug Discovery AI</a></li>
-<li><a href="https://www.google.com/search?q=protein+folding+AI">Protein Folding AI</a></li>
-<li><a href="https://www.google.com/search?q=bioinformatics+tools">Bioinformatics Tools</a></li>
-</ul>
-
-</div>
-
-<script>
-
-function generateAnswer(){
-
-let q = document.getElementById("aiQuestion").value;
-
-let answer = "AI systems analyze biological data such as DNA, proteins, and medical datasets to help discover new drugs and understand diseases.";
-
-document.getElementById("aiAnswer").innerHTML =
-"<p style='color:white;background:#1e293b;padding:15px;border-radius:8px;margin-top:15px'>"+answer+"</p>";
-
-}
-
-</script>
-
-</body>
-<div class="container">
-
-<h1>MySearch</h1>
-
-<script async src="https://cse.google.com/cse.js?cx=058602f0365d4459b"></script>
-
-<div class="gcse-search"></div>
+<!-- Trending Searches -->
 
 <h3>Trending Searches</h3>
 
 <ul class="trending">
+
 <li><a href="https://www.google.com/search?q=AI+bioinformatics">AI Bioinformatics</a></li>
+
 <li><a href="https://www.google.com/search?q=drug+discovery+AI">Drug Discovery AI</a></li>
+
 <li><a href="https://www.google.com/search?q=protein+folding+AI">Protein Folding AI</a></li>
-<li><a href="https://www.google.com/search?q=bioinformatics+tools">Bioinformatics Tools</a></li>
+
+<li><a href="https://www.google.com/search?q=bioinformatics+tools">Best Bioinformatics Tools</a></li>
+
+<li><a href="https://www.google.com/search?q=machine+learning+in+biology">Machine Learning in Biology</a></li>
+
 </ul>
+
+<footer>
+
+<p>Powered by Google Programmable Search</p>
+
+</footer>
 
 </div>
 
