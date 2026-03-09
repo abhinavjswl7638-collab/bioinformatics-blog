@@ -1,122 +1,215 @@
-<!DOCTYPE html>
+          <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BioInformatix Labs | Next‑Gen Bioinformatics Insights</title>
-  <meta name="description" content="Educational bioinformatics blog covering genomics, proteomics, AI in biotech, and computational biology.">
-  <meta name="keywords" content="bioinformatics, genomics, proteomics, computational biology, biotech blog, education">
-  <meta name="author" content="Abhinav Jaiswal">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Search Website</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    header p {
+      font-size: 0.95rem;
+      color: #9ca3af;
+    }
+    .search-container {
+      margin: 30px 10px 10px;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      gap: 8px;
+    }
+    .search-container input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #e5e7eb;
+      outline: none;
+      font-size: 1rem;
+    }
+    .search-container input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px #0ea5e9;
+    }
+    .search-container button {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #0ea5e9;
+      color: #020617;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-container button:hover {
+      background: #22d3ee;
+    }
+    #results {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 700px;
+    }
+    .result-item {
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background: #020617;
+      border: 1px solid #1f2933;
+    }
+    .result-item a.title {
+      font-size: 1.05rem;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .result-item a.title:hover {
+      text-decoration: underline;
+    }
+    .result-item .link {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin: 4px 0;
+      word-break: break-all;
+    }
+    .result-item .snippet {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-top: 4px;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+    footer {
+      margin-top: auto;
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">
-      <span class="logo-mark">Bio</span><span class="logo-text">Informatix Labs</span>
-    </div>
-    <nav class="main-nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="#topics">Topics</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header>
+    <h1>My Search Website</h1>
+    <p>Type anything and press Enter or click Search.</p>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Educational Bioinformatics Hub for the Next Biotech Giant</h1>
-      <p>Deep‑dive articles on genomics, proteomics, AI in drug discovery, and computational biology, written for students and researchers.</p>
-      <form class="search-bar" onsubmit="event.preventDefault();">
-        <input type="text" id="searchInput" placeholder="Search bioinformatics topics, e.g. RNA‑seq, BLAST, pipelines...">
-      </form>
-    </div>
-    <div class="hero-highlight">
-      <p>Trusted educational resource to build your bioinformatics career and biotech innovations.</p>
-      <ul>
-        <li>Genomics & NGS workflows</li>
-        <li>Proteomics & structural biology</li>
-        <li>AI/ML for omics data</li>
-        <li>Cloud & reproducible pipelines</li>
-      </ul>
-    </div>
-  </section>
+  <div class="search-container">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search the web..."
+    />
+    <button id="searchButton">Search</button>
+  </div>
 
-  <main>
-    <section id="latest" class="section">
-      <div class="section-header">
-        <h2>Latest Insights</h2>
-        <p>Curated educational posts in bioinformatics and modern biotechnology.</p>
-      </div>
-      <div id="postsContainer" class="posts-grid">
-        <!-- Cards injected by script.js -->
-      </div>
-    </section>
+  <div id="status"></div>
+  <div id="results"></div>
 
-    <section id="topics" class="section section-alt">
-      <div class="section-header">
-        <h2>Core Bioinformatics Domains</h2>
-        <p>Explore structured learning paths across major domains.</p>
-      </div>
-      <div class="topics-grid">
-        <article class="topic-card">
-          <h3>Genomics</h3>
-          <p>Reference genomes, variant calling, RNA‑seq, and clinical genomics workflows.</p>
-        </article>
-        <article class="topic-card">
-          <h3>Proteomics</h3>
-          <p>Mass‑spec data analysis, protein identification, and functional annotation.</p>
-        </article>
-        <article class="topic-card">
-          <h3>Structural Biology</h3>
-          <p>Protein structure prediction, docking, and structure‑based drug design.</p>
-        </article>
-        <article class="topic-card">
-          <h3>AI & ML</h3>
-          <p>Machine learning for omics, biomarker discovery, and precision medicine.</p>
-        </article>
-        <article class="topic-card">
-          <h3>Cloud & Pipelines</h3>
-          <p>Workflow engines, containers, and scalable analysis in the cloud.</p>
-        </article>
-        <article class="topic-card">
-          <h3>Career & Skills</h3>
-          <p>Roadmaps, tools, and project ideas for students and early‑career scientists.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="section-header">
-        <h2>About This Platform</h2>
-      </div>
-      <div class="about-grid">
-        <div>
-          <p>BioInformatix Labs is an educational initiative focused on turning students into industry‑ready bioinformaticians through practical, concept‑driven content.</p>
-          <p>Posts emphasize clear explanations, real‑world datasets, and modern tools used across leading biotech companies and research labs.</p>
-        </div>
-        <div class="about-highlight">
-          <h3>Content Philosophy</h3>
-          <ul>
-            <li>Explain theory with code and workflows.</li>
-            <li>Bridge academic concepts to industry practice.</li>
-            <li>Keep examples reproducible and open.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-alt">
-      <div class="section-header">
-        <h2>Contact</h2>
-      </div>
-      <p>For collaboration, guest posts, or suggestions, you can add a contact form later or link your email/social profiles here.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© <span id="year"></span> BioInformatix Labs · Educational Bioinformatics Blog.</p>
+  <footer>
+    Powered by Google Programmable Search.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const API_KEY = "YOUR_API_KEY_HERE";      // <- change this
+    const CX_ID   = "YOUR_CX_ID_HERE";        // <- change this
+
+    const input   = document.getElementById("searchInput");
+    const button  = document.getElementById("searchButton");
+    const results = document.getElementById("results");
+    const status  = document.getElementById("status");
+
+    async function performSearch() {
+      const query = input.value.trim();
+      if (!query) {
+        status.textContent = "Please type something to search.";
+        results.innerHTML = "";
+        return;
+      }
+
+      status.textContent = "Searching...";
+      results.innerHTML = "";
+
+      const url =
+        "https://www.googleapis.com/customsearch/v1?key=" +
+        encodeURIComponent(API_KEY) +
+        "&cx=" +
+        encodeURIComponent(CX_ID) +
+        "&q=" +
+        encodeURIComponent(query);
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+        const data = await response.json();
+        renderResults(data);
+      } catch (err) {
+        status.textContent = "Error while searching: " + err.message;
+      }
+    }
+
+    function renderResults(data) {
+      if (!data.items || data.items.length === 0) {
+        status.textContent = "No results found.";
+        results.innerHTML = "";
+        return;
+      }
+
+      status.textContent = "Showing " + data.items.length + " result(s).";
+      results.innerHTML = "";
+
+      data.items.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+
+        const title = document.createElement("a");
+        title.className = "title";
+        title.href = item.link;
+        title.target = "_blank";
+        title.rel = "noopener noreferrer";
+        title.textContent = item.title || "Untitled";
+
+        const link = document.createElement("div");
+        link.className = "link";
+        link.textContent = item.link || "";
+
+        const snippet = document.createElement("div");
+        snippet.className = "snippet";
+        snippet.textContent = item.snippet || "";
+
+        div.appendChild(title);
+        div.appendChild(link);
+        div.appendChild(snippet);
+
+        results.appendChild(div);
+      });
+    }
+
+    button.addEventListener("click", performSearch);
+    input.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    });
+  </script>
 </body>
 </html>
